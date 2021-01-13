@@ -1,0 +1,35 @@
+name: Upkaran Finance CI
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: nodeModules-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+        env:
+          CI: true
+      - name: Lintcheck
+        run: yarn dapp:lint
+        env:
+          CI: true
+      - name: Typecheck
+        run: yarn dapp:typecheck
+        env:
+          CI: true
