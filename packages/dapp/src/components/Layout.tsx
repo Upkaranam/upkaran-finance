@@ -7,7 +7,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { Header } from 'components/Header';
-import { NavBar } from 'components/NavBar';
+import { LeftBar } from 'components/LeftBar';
 import { CONFIG } from 'config';
 import { Web3Context } from 'contexts/Web3Context';
 import React, { useContext } from 'react';
@@ -27,6 +27,7 @@ export const Layout: React.FC = ({ children }) => {
         left={0}
         direction="column"
         p={4}
+        fontFamily="body"
       >
         <Alert
           status="error"
@@ -42,7 +43,7 @@ export const Layout: React.FC = ({ children }) => {
             boxSize={{ base: '32px', sm: '48px', md: '64px' }}
             mr={0}
           />
-          <AlertTitle mt={4} mb={4} fontSize={{ base: '1.5rem', md: '2rem' }}>
+          <AlertTitle mt={4} mb={4} fontSize={{ base: '1.5rem', md: '2rem' }} fontFamily="heading">
             Unsupported Network!
           </AlertTitle>
           <AlertDescription maxWidth="sm">
@@ -66,7 +67,7 @@ export const Layout: React.FC = ({ children }) => {
       background="background"
       position="relative"
     >
-      <NavBar isOpen={isOpen} onClose={onClose} />
+      <LeftBar isOpen={isOpen} onClose={onClose} />
       <Header onOpen={onOpen} />
       <Flex
         flex={1}

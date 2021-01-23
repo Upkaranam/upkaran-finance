@@ -36,10 +36,25 @@ export const theme: Theme = {
   },
   colors: {
     ...chakraTheme.colors,
-    background: '#ffffff',
+    background: '#f0f0f0',
     black10: 'rgba(0,0,0,0.1)',
+    blue: {
+      50: '#dbfaff',
+      100: '#b1e9fd',
+      200: '#85d9f6',
+      300: '#57c8f1',
+      400: '#2db9ec',
+      500: '#139fd2',
+      600: '#027ca5',
+      700: '#005977',
+      800: '#00364a',
+      900: '#00141d',
+    },
   },
   fonts: {
     ...chakraTheme.fonts,
+    body: `'Montserrat', sans-serif`,
+    heading: `'Poppins', sans-serif`,
+    mono: `'Courier Prime', monospace`,
   },
 };

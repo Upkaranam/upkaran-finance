@@ -43,6 +43,8 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
       position="absolute"
       top="0"
       left="0"
+      color="blue.400"
+      fontFamily="heading"
     >
       <HStack spacing={{ base: 2, sm: 4 }}>
         <Button
@@ -52,9 +54,10 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
           p={2}
           ml={-2}
           _hover={{ background: 'black10' }}
+          color="blue.400"
         >
           <svg
-            fill="black"
+            fill="currentColor"
             width="1.5rem"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -72,6 +75,7 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
           borderRadius={4}
           _hover={{ textDecoration: 'none', background: 'black10' }}
           transition="0.25s"
+          fontWeight="bold"
         >
           Upkaran
         </Link>
@@ -83,10 +87,9 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
             onClick={connectWeb3}
             isLoading={loading}
             size="md"
-            textTransform="uppercase"
-            variant="link"
+            colorScheme="blue"
           >
-            Sign In
+            Connect
           </Button>
         )}
         {account && (
@@ -102,18 +105,19 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
                   _hover={{
                     background: { base: 'transparent', sm: 'black10' },
                   }}
-                  border="black10"
+                  border={{base: "none", sm: "1px solid"}}
+                  borderColor="blue.400"
                   p={{ base: 0, sm: 2 }}
                 >
                   <Flex
                     borderRadius="50%"
-                    w={{ base: '1.5rem', md: '2.25rem' }}
-                    h={{ base: '1.5rem', md: '2.25rem' }}
+                    w={{ base: '2rem', md: '2.25rem' }}
+                    h={{ base: '2rem', md: '2.25rem' }}
                     overflow="hidden"
                     justify="center"
                     align="center"
-                    background="white"
-                    border="1px solid #E6E6E6"
+                    border="1px solid"
+                    borderColor="blue.400"
                     bgImage={profile && `url(${profile.imageUrl})`}
                     bgSize="cover"
                     bgRepeat="no-repeat"
@@ -122,7 +126,9 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
                   <Text
                     px={2}
                     display={{ base: 'none', sm: 'flex' }}
-                    fontSize={{ base: '.75rem', md: '.9rem' }}
+                    fontSize={'1rem'}
+                    fontWeight="600"
+                    fontFamily="mono"
                   >
                     {accountString}
                   </Text>
@@ -136,8 +142,9 @@ export const Header: React.FC<Props> = ({ onOpen: openNav }) => {
                     }}
                     fontWeight="normal"
                     width="auto"
+                    colorScheme="blue"
                   >
-                    Sign Out
+                    Disconnect
                   </Button>
                 </Flex>
               </PopoverContent>

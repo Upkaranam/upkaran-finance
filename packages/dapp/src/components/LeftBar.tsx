@@ -19,12 +19,12 @@ type Props = {
   onClose: () => void;
 };
 
-export const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
+export const LeftBar: React.FC<Props> = ({ isOpen, onClose }) => {
   const { account, disconnect } = useContext(Web3Context);
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay>
-        <DrawerContent>
+        <DrawerContent fontFamily="heading">
           <Flex direction="column" position="relative" w="100%" h="100%" p={2}>
             <DrawerHeader fontWeight={600} fontSize="2xl" mb={4}>
               Menu
@@ -32,8 +32,8 @@ export const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
 
             <DrawerBody>
               <VStack spacing={5} align="flex-start">
-                <Link to="/home" onClick={onClose} size="lg">
-                  Home
+                <Link to="/" onClick={onClose} size="lg">
+                  Dashboard
                 </Link>
               </VStack>
             </DrawerBody>
@@ -48,7 +48,7 @@ export const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
                   size="lg"
                   variant="link"
                 >
-                  Sign Out
+                  Disconnect
                 </Button>
               )}
             </DrawerFooter>
