@@ -9,10 +9,40 @@ import {
   DrawerOverlay,
   Flex,
   VStack,
+  Divider,
+  Text,
 } from '@chakra-ui/react';
 import { Link } from 'components/Link';
 import { Web3Context } from 'contexts/Web3Context';
 import React, { useContext } from 'react';
+import { ReactComponent as AaveIcon } from 'icons/aave.svg';
+import { ReactComponent as HomeIcon } from 'icons/home.svg';
+import { useLocation } from 'react-router-dom';
+
+type NavLinkProps = {
+  to: string;
+  text: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  onClose: () => void;
+};
+
+const NavLink: React.FC<NavLinkProps> = ({ to, text, icon: Icon, onClose }) => {
+  const location = useLocation();
+  const here = location.pathname === to;
+  return (
+    <Link
+      to={to}
+      onClick={onClose}
+      display="flex"
+      alignItems="center"
+      color={here ? 'black' : 'grey'}
+      fontWeight={here ? 'bold' : 'normal'}
+    >
+      <Icon width="1.25rem" />
+      <Text ml="0.5rem"> {text} </Text>
+    </Link>
+  );
+};
 
 type Props = {
   isOpen: boolean;
@@ -32,9 +62,19 @@ export const LeftBar: React.FC<Props> = ({ isOpen, onClose }) => {
 
             <DrawerBody>
               <VStack spacing={5} align="flex-start">
-                <Link to="/" onClick={onClose} size="lg">
-                  Dashboard
-                </Link>
+                <NavLink
+                  to="/"
+                  onClose={onClose}
+                  text="Dashboard"
+                  icon={HomeIcon}
+                />
+                <Divider color="blue.200" />
+                <NavLink
+                  to="/aave"
+                  onClose={onClose}
+                  text="Aave"
+                  icon={AaveIcon}
+                />
               </VStack>
             </DrawerBody>
 
@@ -45,8 +85,7 @@ export const LeftBar: React.FC<Props> = ({ isOpen, onClose }) => {
                     disconnect();
                     onClose();
                   }}
-                  size="lg"
-                  variant="link"
+                  variant="ghost"
                 >
                   Disconnect
                 </Button>

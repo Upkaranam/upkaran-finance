@@ -3,7 +3,7 @@ import React from 'react';
 
 const Dashboard: React.FC = () => (
   <VStack w="100%">
-    <Heading> Test </Heading>
+    <Heading> Dashboard </Heading>
   </VStack>
 );
 
