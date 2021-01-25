@@ -2,7 +2,6 @@ import chakraTheme, { Theme as ChakraTheme } from '@chakra-ui/theme';
 
 interface MetaColors {
   background: string;
-  black10: string;
 }
 
 interface MetaTheme {
@@ -37,7 +36,6 @@ export const theme: Theme = {
   colors: {
     ...chakraTheme.colors,
     background: '#f0f0f0',
-    black10: 'rgba(0,0,0,0.1)',
     blue: {
       50: '#dbfaff',
       100: '#b1e9fd',
